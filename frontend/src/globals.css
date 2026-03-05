@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: #0a0a0f;
+  color: #c9d1d9;
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a2332;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff9f40;
+}
+
+/* Wails drag region */
+.wails-drag {
+  --wails-draggable: drag;
+}
+
+/* Panel base style */
+.lyra-panel {
+  background: #0d1117;
+  border: 1px solid #1a2332;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lyra-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00ff9f40, transparent);
+}
+
+/* Glow border effect */
+.glow-border {
+  border: 1px solid #00ff9f30;
+  box-shadow: 0 0 10px rgba(0, 255, 159, 0.1), inset 0 0 10px rgba(0, 255, 159, 0.03);
+}
+
+.glow-border:hover {
+  border-color: #00ff9f50;
+  box-shadow: 0 0 15px rgba(0, 255, 159, 0.2), inset 0 0 15px rgba(0, 255, 159, 0.05);
+}
+
+/* Glow text */
+.glow-text {
+  text-shadow: 0 0 8px rgba(0, 255, 159, 0.6);
+}
+
+/* Scan line animation */
+.scan-line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00ff9f20, transparent);
+  animation: scan 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+/* Progress bar glow */
+.progress-glow {
+  box-shadow: 0 0 6px rgba(0, 255, 159, 0.4);
+}
+
+/* Neon green selection */
+::selection {
+  background: #00ff9f30;
+  color: #00ff9f;
+}
+
+/* Xterm overrides */
+.xterm {
+  padding: 8px;
+}
+
+.xterm-viewport::-webkit-scrollbar {
+  width: 4px;
+}
+
+.xterm-viewport::-webkit-scrollbar-thumb {
+  background: #1a2332;
+}
+
+/* Map styles */
+.rsm-geography {
+  outline: none;
+}
+
+/* Pulse animation for map markers */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.pulse-marker {
+  animation: pulse-ring 2s ease-out infinite;
+}
